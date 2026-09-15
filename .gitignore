@@ -11,3 +11,6 @@ npm-debug.log*
 Thumbs.db
 .idea/
 .vscode/
+
+# نسخة الملف الواحد (مولّدة)
+standalone/

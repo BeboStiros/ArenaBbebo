@@ -8,12 +8,42 @@
 
 ## التشغيل
 
+> **مهم:** كل الأوامر دي تتكتب **جوه مجلد المشروع**، مش في مجلد المستخدم.
+> لو ظهر لك خطأ `ENOENT ... package.json` يبقى أنت في المكان الغلط — اعمل `cd` الأول.
+
+### أسرع طريقة: ملف واحد بدون أي تثبيت
+
+نزّل ملف **`neura.html`** من صفحة [الإصدارات](../../releases/latest) وافتحه **بدبل كليك** — الموقع كامل جواه (الخطوط والتجارب)، ويشتغل بدون إنترنت وبدون سيرفر.
+
+ولو عايز تبني الملف ده بنفسك من الكود:
+
 ```bash
-npm install      # مرة واحدة
-npm run dev      # سيرفر التطوير على http://localhost:5173
-npm run build    # نسخة الإنتاج في مجلد dist/
-npm run preview  # معاينة نسخة الإنتاج
+npm install
+npm run build:single     # ينتج standalone/neura.html
 ```
+
+### التشغيل العادي (سيرفر تطوير)
+
+```bash
+npm install      # مرة واحدة بس
+npm start        # يفتح المتصفح تلقائيًا على http://localhost:5173
+```
+
+| الأمر | بيعمل إيه |
+|-------|-----------|
+| `npm start` | سيرفر التطوير + يفتح المتصفح (أي تعديل يظهر فورًا) |
+| `npm run dev` | سيرفر التطوير بدون فتح المتصفح |
+| `npm run serve` | يبني ويعرض نسخة الإنتاج على `http://localhost:4173` |
+| `npm run build` | ينتج مجلد `dist/` جاهز للرفع على أي استضافة |
+| `npm run build:single` | ينتج ملف `standalone/neura.html` واحد مستقل |
+
+**تفتحه على موبايلك من نفس الواي فاي:** `npm run dev -- --host` وبعدها افتح لينك `Network` اللي هيظهر في الطرفية.
+
+### النشر على الويب
+
+- **GitHub Pages:** اتغلّب على `Settings → Pages → Source: GitHub Actions` مرة واحدة، وبعدها كل تحديث على `main` هيترفع تلقائيًا على `https://<username>.github.io/ArenaBbebo/` (سير العمل جاهز في `.github/workflows/deploy-pages.yml`).
+- **Netlify / Vercel / Cloudflare Pages:** اربط المستودع (Build: `npm run build` · Output: `dist`) أو اسحب مجلد `dist` يدويًا على [app.netlify.com/drop](https://app.netlify.com/drop).
+- **أي استضافة عادية (cPanel):** ارفع محتويات `dist/` في `public_html` — مفيش سيرفر ولا قاعدة بيانات مطلوبة.
 
 المشروع **بدون أي مكتبة واجهات** (لا React ولا Vue) — HTML + CSS + JavaScript خام مع [Vite](https://vitejs.dev) كأداة بناء فقط.
 
