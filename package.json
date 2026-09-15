@@ -6,8 +6,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "vite --open",
     "build": "vite build",
-    "preview": "vite preview --host"
+    "preview": "vite preview --host",
+    "serve": "vite build && vite preview --host --open"
   },
   "devDependencies": {
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
