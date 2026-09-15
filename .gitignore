@@ -1,0 +1,13 @@
+# تجاهل ملفات التطوير والبناء
+node_modules/
+dist/
+.arena/
+.vite/
+*.log
+npm-debug.log*
+
+# نظام التشغيل والمحرر
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

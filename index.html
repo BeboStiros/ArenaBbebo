@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>نيورا — اشرح التقنية بشكل يخطف العين</title>
+    <meta
+      name="description"
+      content="نيورا: موقع تفاعلي زجاجي يشرح الذكاء الاصطناعي والشبكات العصبية والنماذج اللغوية والبرمجة بطريقة مبسّطة — بالعربي والإنجليزي."
+    />
+    <meta name="theme-color" content="#05070f" />
+    <meta name="color-scheme" content="dark light" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="نيورا — اشرح التقنية بشكل يخطف العين" />
+    <meta
+      property="og:description"
+      content="فصول تفاعلية مبسّطة عن الذكاء الاصطناعي والبرمجة: شبكات عصبية، تعلّم الآلة، النماذج اللغوية، وخريطة تعلّم عملية."
+    />
+    <meta property="og:image" content="/images/og-cover.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main" id="skipLink">تخطَّ إلى المحتوى</a>
+
+    <!-- شاشة تشغيل قصيرة -->
+    <div class="boot" id="boot" aria-hidden="true">
+      <div class="boot__mark">
+        <span class="boot__ring"></span>
+        <span class="boot__ring boot__ring--2"></span>
+        <span class="boot__core"></span>
+      </div>
+      <p class="boot__text">نيورا</p>
+    </div>
+
+    <!-- طبقات الخلفية -->
+    <div class="bg" aria-hidden="true">
+      <span class="blob blob--1"></span>
+      <span class="blob blob--2"></span>
+      <span class="blob blob--3"></span>
+      <span class="blob blob--4"></span>
+      <span class="bg__grid"></span>
+      <canvas class="bg__dust" id="dust"></canvas>
+      <span class="bg__grain"></span>
+      <span class="bg__vignette"></span>
+    </div>
+
+    <div class="progress" aria-hidden="true"><i id="progressFill"></i></div>
+
+    <header class="topbar" id="topbar">
+      <div class="topbar__inner">
+        <a class="brand" href="#top" aria-label="نيورا">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+              <defs>
+                <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#a78bfa" />
+                  <stop offset=".55" stop-color="#22d3ee" />
+                  <stop offset="1" stop-color="#f472b6" />
+                </linearGradient>
+              </defs>
+              <circle cx="24" cy="24" r="20" fill="none" stroke="url(#bg1)" stroke-width="1.6" opacity=".75" />
+              <circle cx="24" cy="24" r="12.5" fill="none" stroke="url(#bg1)" stroke-width="1.6" opacity=".55" />
+              <circle cx="24" cy="24" r="4.6" fill="url(#bg1)" />
+              <circle cx="44" cy="24" r="2.6" fill="#a78bfa" />
+              <circle cx="6" cy="24" r="2.2" fill="#22d3ee" />
+              <circle cx="24" cy="6" r="2" fill="#f472b6" />
+            </svg>
+          </span>
+          <span class="brand__text">
+            <span class="brand__name" id="brandName">نيورا</span>
+            <span class="brand__sub" id="brandSub">شرح مبسّط للتقنية</span>
+          </span>
+        </a>
+
+        <nav class="nav" id="nav" aria-label="التنقل"></nav>
+
+        <div class="controls">
+          <button class="pill" id="langToggle" type="button" aria-label="تغيير اللغة">
+            <span class="pill__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M3 12h18M12 3c2.6 3 2.6 15 0 18M12 3c-2.6 3-2.6 15 0 18" />
+              </svg>
+            </span>
+            <span class="pill__label" id="langLabel">EN</span>
+          </button>
+
+          <button class="icon-btn" id="themeToggle" type="button" aria-label="تبديل الوضع الليلي">
+            <span class="icon-sun" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7">
+                <circle cx="12" cy="12" r="4.2" />
+                <path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M19.1 4.9l-1.8 1.8M6.7 17.3l-1.8 1.8" />
+              </svg>
+            </span>
+            <span class="icon-moon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7">
+                <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z" />
+              </svg>
+            </span>
+          </button>
+
+          <button class="icon-btn nav-only" id="menuBtn" type="button" aria-label="القائمة" aria-expanded="false">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="hero" aria-labelledby="hero-title"></section>
+      <div class="chapters" id="chapters"></div>
+      <section class="section" id="quiz" aria-labelledby="quiz-title"></section>
+      <section class="section" id="faq" aria-labelledby="faq-title"></section>
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+
+    <nav class="rail" id="rail" aria-label="فهرس الفصول"></nav>
+    <button class="fab" id="toTop" type="button" hidden aria-label="العودة للأعلى">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.9">
+        <path d="M12 19V5M6 11l6-6 6 6" />
+      </svg>
+    </button>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <noscript>
+      <div class="noscript">
+        يحتاج هذا الموقع إلى JavaScript لعرض الفصول التفاعلية. / This site needs JavaScript to render the interactive
+        chapters.
+      </div>
+    </noscript>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
