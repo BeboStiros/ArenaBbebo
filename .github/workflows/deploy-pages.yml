@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
 
+# النشر مسموح من main فقط (قاعدة حماية بيئة github-pages)
 on:
   push:
-    branches: [main, arena/01a0a262-arenabbebo]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
