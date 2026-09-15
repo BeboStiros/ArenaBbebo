@@ -9,7 +9,16 @@
 ## التشغيل
 
 > **مهم:** كل الأوامر دي تتكتب **جوه مجلد المشروع**، مش في مجلد المستخدم.
-> لو ظهر لك خطأ `ENOENT ... package.json` يبقى أنت في المكان الغلط — اعمل `cd` الأول.
+> لو ظهر لك خطأ `ENOENT ... package.json` أو `The system cannot find the path specified`
+> يبقى أنت في المكان الغلط — اعمل `cd` الأول أو استخدم الطريقة دي تحت.
+
+### ويندوز: دبل كليك واحد (أسهل طريقة)
+
+1. نزّل المشروع مضغوط من: [ArenaBbebo.zip](../../archive/refs/heads/main.zip)
+2. **فك الضغط** (كليك يمين على الملف → Extract All) — مهم جدًا، من غير فك الضغط المجلد مش هيتقرأ.
+3. ادخل المجلد المفكوك ودبل كليك على **`start.bat`** → هو اللي ينزّل المكتبات ويفتح المتصفح لوحده.
+
+على **ماك/لينكس**: نفس الكلام، بس دبل كليك على **`start.sh`** (أو من الطرفية `./start.sh`).
 
 ### أسرع طريقة: ملف واحد بدون أي تثبيت
 
@@ -38,12 +47,13 @@ npm start        # يفتح المتصفح تلقائيًا على http://localh
 | `npm run serve` | يبني ويعرض نسخة الإنتاج على `http://localhost:4173` |
 | `npm run build` | ينتج مجلد `dist/` جاهز للرفع على أي استضافة |
 | `npm run build:single` | ينتج ملف `standalone/neura.html` واحد مستقل |
+| `start.bat` / `start.sh` | تثبيت + تشغيل + فتح المتصفح بضغطة واحدة |
 
 **تفتحه على موبايلك من نفس الواي فاي:** `npm run dev -- --host` وبعدها افتح لينك `Network` اللي هيظهر في الطرفية.
 
 ### النشر على الويب
 
-- **GitHub Pages:** اتغلّب على `Settings → Pages → Source: GitHub Actions` مرة واحدة، وبعدها كل تحديث على `main` هيترفع تلقائيًا على `https://<username>.github.io/ArenaBbebo/` (سير العمل جاهز في `.github/workflows/deploy-pages.yml`).
+- **GitHub Pages:** فعّل `Settings → Pages → Source: GitHub Actions` مرة واحدة، وبعدها كل تحديث على `main` هيترفع تلقائيًا على `https://<username>.github.io/ArenaBbebo/` (سير العمل جاهز في `.github/workflows/deploy-pages.yml`). ونسخة الملف الواحد هتبقى متاحة على نفس الرابط + `/neura.html`.
 - **Netlify / Vercel / Cloudflare Pages:** اربط المستودع (Build: `npm run build` · Output: `dist`) أو اسحب مجلد `dist` يدويًا على [app.netlify.com/drop](https://app.netlify.com/drop).
 - **أي استضافة عادية (cPanel):** ارفع محتويات `dist/` في `public_html` — مفيش سيرفر ولا قاعدة بيانات مطلوبة.
 

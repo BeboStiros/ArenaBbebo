@@ -31,6 +31,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      # ننسخ نسخة «ملف واحد» جوه الناتج عشان تبقى متاحة للتحميل من الموقع
+      - name: Expose standalone file
+        run: cp download/neura.html dist/neura.html
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v3
